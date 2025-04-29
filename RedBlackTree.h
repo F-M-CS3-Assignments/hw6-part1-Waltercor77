@@ -24,8 +24,11 @@ struct RBTNode {
 class RedBlackTree {
 	
 	public:
+
 		RedBlackTree();
+
 		RedBlackTree(int newData);
+
 		RedBlackTree(const RedBlackTree &rbt);
 
 		string ToInfixString() const {return ToInfixString(root);};
@@ -36,14 +39,23 @@ class RedBlackTree {
 
 		bool Contains(int data) const ;
 		size_t Size() const {return numItems;};
+		
 		int GetMin() const;
+
 		int GetMax() const;
 		
 	
 	private: 
 		unsigned long long int numItems  = 0;
 		RBTNode *root = nullptr;
+
+		void ToPostfixString(RBTNode* node, std::string& result) const;
+
 		
+
+		bool RBTreeSetChild(RBTNode* parent, std::string whichChild, RBTNode* child);
+		bool RBTreeReplaceChild(RBTNode* parent, RBTNode* currentChild, RBTNode* newChild);
+
 		static string ToInfixString(const RBTNode *n);
 		static string ToPrefixString(const RBTNode *n);
 		static string ToPostfixString(const RBTNode *n);
